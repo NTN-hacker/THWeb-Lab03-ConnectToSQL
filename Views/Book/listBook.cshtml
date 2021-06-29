@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Lab3.Models.SACH>
+
+@{
+    ViewBag.Title = "listBook";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>listBook</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới một sách", "createBook")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TenSach)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GiaBan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GiaBia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AnhBia)
+        </th>
+        <th>
+            Tác vụ
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenSach)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GiaBan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GiaBia)
+        </td>
+        <td>
+            <img src="~/images/@item.AnhBia" width="70" height="70">
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Editbook", new { id=item.MaSach }) |
+            @Html.ActionLink("Delete", "deleteBook", new { id=item.MaSach })
+        </td>
+        <td>
+            <a href="@Url.Action("Buy", "Book",new {id = item.MaSach })" class="btn btn-primary">Buy</a>
+        </td>
+    </tr>
+}
+
+</table>

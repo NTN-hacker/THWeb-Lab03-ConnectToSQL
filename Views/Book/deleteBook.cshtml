@@ -1,0 +1,60 @@
+﻿@model Lab3.Models.SACH
+
+@{
+    ViewBag.Title = "deleteBook";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Xóa một cuốn sách</h2>
+
+<h3>Bạn có chắc chắn xóa cuốn sách <strong>@Model.TenSach</strong> không?</h3>
+<div>
+    <h4>SACH</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenSach)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenSach)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GiaBan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GiaBan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GiaBia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GiaBia)
+        </dd>
+
+ 
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnhBia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnhBia)
+        </dd>
+
+        
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
